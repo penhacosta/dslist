@@ -1,44 +1,24 @@
 package com.adevaldo.dslits.dto;
 
-import com.adevaldo.dslits.entities.Game;
-import com.adevaldo.dslits.projections.GameMinProjection;
+import org.springframework.beans.BeanUtils;
 
-public class GameMinDTO {
+import com.adevaldo.dslits.entities.Game;
+
+public class GameDTO {
 
     private Long id;
     private String title;
     private Integer year;
+    private String genre;
+    private String platforms;
+    private Double score;
     private String imgUrl;
     private String shortDescription;
+    private String longDescription;
 
-    public GameMinDTO(){
-
+    public GameDTO(Game entity){
+       BeanUtils.copyProperties(entity, this);
     }
-
-    public GameMinDTO(Long id, String title, Integer year, String imgUrl, String shortDescription) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.imgUrl = imgUrl;
-        this.shortDescription = shortDescription;
-    }
-
-     public GameMinDTO(Game entity) {
-        this.id = entity.getId();
-        this.title = entity.getTitle();
-        this.year = entity.getYear();
-        this.imgUrl = entity.getImgUrl();
-        this.shortDescription = entity.getShortDescription();
-    }
-
-     public GameMinDTO(GameMinProjection projection) {
-        this.id = projection.getId();
-        this.title = projection.getTitle();
-        this.year = projection.getYear();
-        this.imgUrl = projection.getImgUrl();
-        this.shortDescription = projection.getShortDescription();
-    }
-
 
     public Long getId() {
         return id;
@@ -64,6 +44,30 @@ public class GameMinDTO {
         this.year = year;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(String platforms) {
+        this.platforms = platforms;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
     public String getImgUrl() {
         return imgUrl;
     }
@@ -80,7 +84,13 @@ public class GameMinDTO {
         this.shortDescription = shortDescription;
     }
 
-    
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
 
     
     
